@@ -12,7 +12,7 @@
       BASE: '/api',
     })
     .constant('APP', {
-      HOME_STATE: 'app',
+      HOME_STATE: 'app.home',
     })
     .constant('HTTP_STATUS_CODE', {
       OK: 200,
