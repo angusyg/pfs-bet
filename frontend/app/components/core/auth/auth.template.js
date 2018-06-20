@@ -20,7 +20,7 @@
               <div tooltip-placement="right" uib-tooltip="{{'AUTH_BAD_LOGIN' | translate}}" tooltip-class="fe-error" tooltip-is-open="auth.error === 'BAD_LOGIN'" tooltip-trigger="'none'" ng-class="{'shake': auth.error === 'BAD_LOGIN'}">
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="icon ion-person"></i></div>
+                    <div class="input-group-text"><span class="oi oi-person"></span></div>
                   </div>
                   <input name="login" type="text" class="form-control form-control-sm" id="login" placeholder="{{'AUTH_PLACEHOLDER_LOGIN' | translate}}" required ng-model="auth.user.login">
                 </div>
@@ -30,7 +30,7 @@
               <div tooltip-placement="right" uib-tooltip="{{'AUTH_BAD_PASSWORD' | translate}}" tooltip-class="fe-error" tooltip-is-open="auth.error === 'BAD_PASSWORD'" tooltip-trigger="'none'" ng-class="{'shake': auth.error === 'BAD_PASSWORD'}">
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text"><i class="icon ion-locked"></i></div>
+                    <div class="input-group-text"><span class="oi oi-lock-locked"></span></i></div>
                   </div>
                   <input name="password" type="password" class="form-control form-control-sm" id="password" placeholder="{{'AUTH_PLACEHOLDER_PASSWORD' | translate}}" required ng-model="auth.user.password">
                 </div>

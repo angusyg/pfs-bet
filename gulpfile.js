@@ -34,6 +34,9 @@ const sourceCss = [
   'frontend/styles/**/*.sass',
   'frontend/styles/**/*.scss'
 ];
+const fonts = [
+  'node_modules/@fortawesome/fontawesome-free/webfonts/*',
+];
 const sourceHtml = ['frontend/html/**/*'];
 const sourceImage = ['frontend/images/**/*'];
 const sourceI18n = ['frontend/i18n/**/*'];
@@ -43,6 +46,7 @@ const destinationCss = `${dest}/stylesheets`;
 const destinationHtml = `${dest}`;
 const destinationImage = `${dest}/images`;
 const destinationI18n = `${dest}/i18n`;
+const destinationFonts = `${dest}/webfonts`;
 const finalJs = 'frontend.js';
 const lintJs = [
   '/**/*.js',
@@ -107,6 +111,13 @@ gulp.task('css', () => pumpPromise([
   plugins.if(!isProduction, plugins.connect.reload()),
 ]));
 
+
+// Copies fonts
+gulp.task('fonts', () => pumpPromise([
+  gulp.src(fonts),
+  gulp.dest(destinationFonts),
+]));
+
 // Copies js lib
 gulp.task('lib-js', () => pumpPromise([
   plugins.if(!isProduction, gulp.src(libJs)),
@@ -169,5 +180,5 @@ gulp.task('watch', () => {
 });
 
 // Default task
-gulp.task('default', callback => runSequence('clean', ['html', 'image', 'i18n', 'css', 'lib-js', 'js'], 'connect', 'watch', callback));
+gulp.task('default', callback => runSequence('clean', ['html', 'image', 'i18n', 'fonts', 'css', 'lib-js', 'js'], 'connect', 'watch', callback));
 gulp.task('postinstall', ['default']);

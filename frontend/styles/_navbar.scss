@@ -1,0 +1,25 @@
+.subnavbar {
+  @extend .navbar;
+
+  height: 2.5em;
+
+  .nav-item {
+    .nav-link {
+      padding-right: 0.75em;
+      padding-left: 0.75em;
+      color: #fff;
+    }
+
+    &.active {
+      .nav-link {
+        color: #fff;
+        background-color: #189300;
+      }
+    }
+  }
+
+  @include themify($themes) {
+    background-color: themed('backgroundColor');
+  }
+
+}
