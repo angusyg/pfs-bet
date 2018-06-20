@@ -1,3 +1,27 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'core';
 @import 'tooltip';
+
+#content {
+  margin-top: 25px;
+}
+
+.subnav {
+  height: 40px;
+  background-color: #115e8f;
+
+  .nav-item {
+    .nav-link {
+      padding-right: .75rem;
+      padding-left: .75rem;
+      color: #fff;
+    }
+
+    &.active {
+      .nav-link {
+        color: #fff;
+        background-color: #189300;
+      }
+    }
+  }
+}
