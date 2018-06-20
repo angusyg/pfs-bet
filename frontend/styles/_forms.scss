@@ -33,20 +33,4 @@ input[type=text] {
     color: #aaa;
     transition: 0.3s;
   }
-
-  &.inputIconBg {
-    input[type=text] {
-      &:focus + i {
-        color: #fff;
-        background-color: red;
-      }
-    }
-
-    i {
-      background-color: blue;
-      color: #fff;
-      padding: 9px 4px;
-      border-radius: 4px 0 0 4px;
-    }
-  }
 }
