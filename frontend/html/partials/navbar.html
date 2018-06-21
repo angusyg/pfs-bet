@@ -33,13 +33,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" ng-class="{'active': navbar.selectedTab === navbar.PRONOS_TAB}">
-          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.PRONOS_TAB)">PRONOSTIQUES</a>
+          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.PRONOS_TAB)">{{'NAVBAR_PRONOSTICS' | translate | uppercase}}</a>
         </li>
         <li class="nav-item" ng-class="{'active': navbar.selectedTab === navbar.RANKING_TAB}">
-          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.RANKING_TAB)">CLASSEMENT</a>
+          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.RANKING_TAB)">{{'NAVBAR_RANKING' | translate | uppercase}}</a>
         </li>
         <li class="nav-item" ng-class="{'active': navbar.selectedTab === navbar.BONUS_TAB}">
-          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.BONUS_TAB)">BONUS</a>
+          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.BONUS_TAB)">{{'NAVBAR_BONUS' | translate | uppercase}}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link no-focus" href="#" ng-click="navbar.selectTab(navbar.ADMIN_TAB)">{{'NAVBAR_ADMIN' | translate | uppercase}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link no-focus" href="#"><i class="fa fa-cog fa-lg fa-fw"></i></a>
         </li>
       </ul>
     </div>

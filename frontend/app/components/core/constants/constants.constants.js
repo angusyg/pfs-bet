@@ -23,6 +23,9 @@
       TOKEN_EXPIRED: 419,
       SERVER_ERROR: 500,
     })
+    .constant('UI_EVENTS', {
+      ADMIN_OPEN_MODAL: 'admin-open-modal',
+    })
     .constant('PARAMETERS', {
       TOOLTIP_DURATION: 3000,
       SERVER_LOGGING_ACTIVATED: false,

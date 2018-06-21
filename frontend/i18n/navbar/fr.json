@@ -1,3 +1,6 @@
 {
-  "HELLO_WORLD": "Hello World depuis le json"
+  "NAVBAR_PRONOSTICS": "Pronostiques",
+  "NAVBAR_RANKING": "Classement",
+  "NAVBAR_BONUS": "Bonus",
+  "NAVBAR_ADMIN": "Admin"
 }

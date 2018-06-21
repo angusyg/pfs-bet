@@ -34,6 +34,12 @@
       &:focus {
         color: #000000;
         background-color: #fff;
+
+        &.no-focus {
+          color: #fff;
+          background-color: #28a745 !important;
+          outline: none;
+        }
       }
     }
 

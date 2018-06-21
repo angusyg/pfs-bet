@@ -5,5 +5,8 @@
   'use strict';
 
   angular
-    .module('frontend.navbar', []);
+    .module('frontend.navbar', [
+      'ui.router',
+      'pascalprecht.translate',
+    ]);
 })();
