@@ -1,47 +1,45 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-secondary d-none d-sm-block">
   <div class="container">
-
-  <ul class="navbar-nav m-auto">
-    <span class="team-flag ASSE"></span>
-    <span class="team-flag ANG"></span>
-    <span class="team-flag ASM"></span>
-    <span class="team-flag ASNL"></span>
-    <span class="team-flag BAS"></span>
-    <span class="team-flag BDX"></span>
-    <span class="team-flag CAEN"></span>
-    <span class="team-flag DFCO"></span>
-    <span class="team-flag EAG"></span>
-    <span class="team-flag LOR"></span>
-    <span class="team-flag LOSC"></span>
-    <span class="team-flag METZ"></span>
-    <span class="team-flag MONT"></span>
-    <span class="team-flag NAN"></span>
-    <span class="team-flag OGCN"></span>
-    <span class="team-flag OL"></span>
-    <span class="team-flag OM"></span>
-    <span class="team-flag PSG"></span>
-    <span class="team-flag REN"></span>
-    <span class="team-flag TFC"></span>
-  </ul>
-</div>
-
+    <div class="navbar-nav m-auto">
+      <span class="team-flag ASSE"></span>
+      <span class="team-flag ANG"></span>
+      <span class="team-flag ASM"></span>
+      <span class="team-flag ASNL"></span>
+      <span class="team-flag BAS"></span>
+      <span class="team-flag BDX"></span>
+      <span class="team-flag CAEN"></span>
+      <span class="team-flag DFCO"></span>
+      <span class="team-flag EAG"></span>
+      <span class="team-flag LOR"></span>
+      <span class="team-flag LOSC"></span>
+      <span class="team-flag METZ"></span>
+      <span class="team-flag MONT"></span>
+      <span class="team-flag NAN"></span>
+      <span class="team-flag OGCN"></span>
+      <span class="team-flag OL"></span>
+      <span class="team-flag OM"></span>
+      <span class="team-flag PSG"></span>
+      <span class="team-flag REN"></span>
+      <span class="team-flag TFC"></span>
+    </div>
+  </div>
 </nav>
-<nav class="subnavbar navbar-expand-md navbar-light bg-success">
+<nav class="subnavbar navbar-expand-md">
   <div class="container">
-    <a class="navbar-brand" href="#"><i class="fa fa-home fa-lg fa-fw"></i></a>
+    <a class="navbar-brand" href="#" ng-class="{'active': navbar.selectedTab === navbar.HOME_TAB}" ng-click="navbar.selectTab(navbar.HOME_TAB)"><i class="fa fa-home fa-lg fa-fw"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">PRONOSTIQUES</a>
+        <li class="nav-item" ng-class="{'active': navbar.selectedTab === navbar.PRONOS_TAB}">
+          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.PRONOS_TAB)">PRONOSTIQUES</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">CLASSEMENT</a>
+        <li class="nav-item" ng-class="{'active': navbar.selectedTab === navbar.RANKING_TAB}">
+          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.RANKING_TAB)">CLASSEMENT</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">BONUS</a>
+        <li class="nav-item" ng-class="{'active': navbar.selectedTab === navbar.BONUS_TAB}">
+          <a class="nav-link" href="#" ng-click="navbar.selectTab(navbar.BONUS_TAB)">BONUS</a>
         </li>
       </ul>
     </div>
