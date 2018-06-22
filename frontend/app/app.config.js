@@ -25,7 +25,9 @@
         }
       },
       resolve: {
-        init: ['authService', (authService) => authService.initialize()],
+        init: ['authService', 'userService', (authService, userService) => authService.initialize()
+          .then(() => userService.initialize())
+        ],
       }
     };
 

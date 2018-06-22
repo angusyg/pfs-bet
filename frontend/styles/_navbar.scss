@@ -1,8 +1,7 @@
 .subnavbar {
   @extend .navbar;
   height: 2.5em;
-  background-color: #28a745 !important;
-
+  //background-color: #28a745 !important;
   .navbar-brand {
     margin: 0;
     padding-right: 0.75em;
@@ -31,20 +30,7 @@
         background-color: #aee6ba;
       }
 
-      &:focus {
-        color: #000000;
-        background-color: #fff;
-
-        &.no-focus {
-          color: #fff;
-          background-color: #28a745 !important;
-          outline: none;
-        }
-      }
-    }
-
-    &.active {
-      .nav-link {
+      &.active {
         color: #000000;
         background-color: #fff;
       }

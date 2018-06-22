@@ -33,13 +33,17 @@
     return {
       getToken: getToken,
       getRefreshToken: getRefreshToken,
+      getUserId: getUserId,
+      getUserInfos: getUserInfos,
+      getUserLogin: getUserLogin,
+      getUserRoles: getUserRoles,
       initialize: initialize,
       isAuthorized: isAuthorized,
       isLoggedIn: isLoggedIn,
       login: login,
       logout: logout,
       refreshToken: refreshToken,
-      stateSecurization: stateSecurization
+      stateSecurization: stateSecurization,
     };
 
     function cleanStore() {
@@ -48,12 +52,37 @@
       store.remove(SECURITY.ACCESS_TOKEN_TIMESTAMP);
     }
 
+    function getRefreshToken() {
+      return store.get(SECURITY.REFRESH_TOKEN);
+    }
+
     function getToken() {
       return store.get(SECURITY.ACCESS_TOKEN);
     }
 
-    function getRefreshToken() {
-      return store.get(SECURITY.REFRESH_TOKEN);
+    function getTokenExpirationDuration(token) {
+      const payload = getUserInfos(token);
+      return payload.exp - payload.iat;
+    }
+
+    function getUserId(token) {
+      if (isWellformedToken(token)) return getUserInfos(token).id;
+      return null;
+    }
+
+    function getUserInfos(token) {
+      if (isWellformedToken(token)) return JSON.parse(base64.urlDecodeBase64(token.split('.')[1]));
+      return null;
+    }
+
+    function getUserLogin(token) {
+      if (isWellformedToken(token)) return getUserInfos(token).login;
+      return null;
+    }
+
+    function getUserRoles(token) {
+      if (isWellformedToken(token)) return getUserInfos(token).roles;
+      return null;
     }
 
     function initialize() {
@@ -65,12 +94,18 @@
       if (!isLoggedIn()) return false;
       if (authorizedRoles === USER_ROLES.ALL) return true;
       if (!Array.isArray(authorizedRoles)) authorizedRoles = [authorizedRoles];
-      const userRoles = helper.getUserRolesFromToken(getToken());
+      const userRoles = getUserRoles(getToken());
       return authorizedRoles.some(role => userRoles.indexOf(role) >= 0);
     }
 
     function isLoggedIn() {
       return store.get(SECURITY.ACCESS_TOKEN) !== null;
+    }
+
+    function isWellformedToken(token) {
+      if (helper.isBlank(token)) return false;
+      if (token.split('.').length !== 3) return false;
+      return true;
     }
 
     function login(user) {
@@ -79,6 +114,15 @@
           store.set(SECURITY.ACCESS_TOKEN, response.data.accessToken);
           store.set(SECURITY.REFRESH_TOKEN, response.data.refreshToken);
           putTimer(response.data.accessToken);
+          return $q.resolve();
+        })
+        .catch(err => $q.reject(err));
+    }
+
+    function logout() {
+      return $http.get(LOGOUT_ENDPOINT)
+        .then(() => {
+          cleanStore();
           return $q.resolve();
         })
         .catch(err => $q.reject(err));
@@ -120,15 +164,6 @@
         }, Math.floor(expirationDurationMs * 0.9));
         refreshTimerRunning = true;
       }
-    }
-
-    function logout() {
-      return $http.get(LOGOUT_ENDPOINT)
-        .then(() => {
-          cleanStore();
-          return $q.resolve();
-        })
-        .catch(err => $q.reject(err));
     }
 
     function refreshToken() {

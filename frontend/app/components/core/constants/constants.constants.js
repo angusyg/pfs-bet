@@ -12,7 +12,7 @@
       BASE: '/api',
     })
     .constant('APP', {
-      HOME_STATE: 'app.home',
+      DEFAULT_THEME: 'theme-blue',
     })
     .constant('HTTP_STATUS_CODE', {
       OK: 200,

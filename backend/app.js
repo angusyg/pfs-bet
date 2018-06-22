@@ -15,6 +15,7 @@
  * @requires helpers/errorhandler
  * @requires helpers/logger
  * @requires helpers/security
+ * @requires helpers/resources
  * @requires routes/api
  */
 
