@@ -1,15 +1,12 @@
-/* eslint no-param-reassign: 0 */
 /**
  * @fileoverview User class module
  * @module models/users
  * @requires {@link external:camo}
- * @requires {@link external:kind-of}
  * @requires {@link external:bcrypt}
  * @requires config/app
  */
 
 const { Document } = require('camo');
-const kindOf = require('kind-of');
 const bcrypt = require('bcrypt');
 const config = require('../config/app');
 
@@ -83,21 +80,6 @@ class User extends Document {
    */
   preSave() {
     this.password = bcrypt.hashSync(this.password, config.app.saltFactor);
-  }
-
-  static filterProperties(user) {
-    if (user instanceof User) throw new TypeError('user must be an instance of User');
-
-    delete user._id;
-    delete user.password;
-    delete user.refreshToken;
-  }
-
-  static listFilterProperties(list) {
-    const type = kindOf(list);
-    if (type !== 'array') throw new TypeError(`list must be a User[] but got '${type}'`);
-    list.forEach(user => User.filterProperties(user));
-    return list;
   }
 }
 

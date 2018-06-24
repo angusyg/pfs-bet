@@ -17,6 +17,7 @@
     '$transitions',
     '$timeout',
     'helper',
+    'base64',
     'SECURITY',
     'AUTH_EVENTS',
     'AUTH_EVENTS_TYPE',
@@ -24,7 +25,7 @@
     'USER_ROLES',
   ];
 
-  function AuthService($http, store, $q, $rootScope, $transitions, $timeout, helper, SECURITY, AUTH_EVENTS, AUTH_EVENTS_TYPE, API, USER_ROLES) {
+  function AuthService($http, store, $q, $rootScope, $transitions, $timeout, helper, base64, SECURITY, AUTH_EVENTS, AUTH_EVENTS_TYPE, API, USER_ROLES) {
     const LOGIN_ENDPOINT = `${API.URL}${API.BASE}/login`;
     const LOGOUT_ENDPOINT = `${API.URL}${API.BASE}/logout`;
     const REFRESH_ENDPOINT = `${API.URL}${API.BASE}/refresh`;
@@ -157,7 +158,7 @@
 
     function putTimer(token) {
       if (!refreshTimerRunning) {
-        const expirationDurationMs = helper.getTokenExpirationDuration(token) * 1000;
+        const expirationDurationMs = getTokenExpirationDuration(token) * 1000;
         $timeout(() => {
           refreshTimerRunning = false;
           putRefreshTimer();

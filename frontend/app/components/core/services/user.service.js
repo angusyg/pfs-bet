@@ -13,9 +13,10 @@
     'authService',
     'helper',
     'APP',
+    '$http'
   ];
 
-  function UserService($q, authService, helper, APP) {
+  function UserService($q, authService, helper, APP, $http) {
     let payload = {};
 
     return {
@@ -30,16 +31,12 @@
     }
 
     function initialize() {
-      payload = helper.getUserInfosFromToken(authService.getToken());
+      payload = authService.getUserInfos();
       return $q.resolve();
     }
 
     function setTheme(theme) {
       payload.theme = theme;
-    }
-
-    function updatePayload(newValue, oldValue) {
-      if (newValue !== oldValue) payload = helper.getUserInfosFromToken(newValue);
     }
   }
 })();

@@ -15,6 +15,8 @@ helper.addResource = (name, document, config) => {
   return resource;
 };
 
+helper.removeResource = name => resources.delete(name);
+
 helper.getResource = name => resources.get(name);
 
 helper.getResourceRouter = name => resources.get(name).router;

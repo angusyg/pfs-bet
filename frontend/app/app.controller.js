@@ -22,10 +22,9 @@
 
     /** functions */
     vm.toto = () => userService.setTheme('theme-dark');
-    vm.toto2 = () => authService.cleanStore();
 
     $scope.$watch(userService.getTheme, (newValue, oldValue) => {
-      if (newValue !== oldValue) vm.theme = userService.getTheme();
+      if (newValue !== oldValue) vm.theme = newValue;
     });
 
   }

@@ -45,7 +45,7 @@ app.use(pino({
 }));
 
 // Connection to db
-connect();
+connect().then(db => app.set('db', db));
 
 // Security middlewares
 app.use(helmet());

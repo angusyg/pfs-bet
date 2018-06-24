@@ -70,8 +70,15 @@ router.get(refreshPath, requiresLogin, apiController.refreshToken);
 router.use('/users', resources.addResource('users', User, {
   global: {
     protected: true,
-    roles: [roles.ADMIN, roles.USER],
+    roles: [
+      roles.ADMIN,
+      roles.USER,
+    ],
   },
+  filter: [
+    'password',
+    'refreshToken',
+  ],
 }).router);
 
 module.exports = router;
